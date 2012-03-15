@@ -1,0 +1,23 @@
+%div{:'data-role' => 'page'}
+  %div{:'data-role' => 'header'}
+    %h1
+      Password Hasher
+  %div{:'data-role' => 'content'}
+    %form#password-form{:'data-ajax' => 'false'}
+      .ui-hide-label{:'data-role' => 'fieldcontain'}
+        %label{:for => 'password'}
+          Master Password
+        %input#password{:type => 'password', :name => 'password', :placeholder => 'Master Password'}
+        %label{:for => 'sitename'}
+          Site Name
+        %input#sitename{:type => 'text', :name => 'sitename', :placeholder => 'Site Name'}
+        %input{:type => 'submit', :value => 'Generate'}
+        %input#hash{:type => 'text', :name => 'hash', :placeholder => 'Generated Hash', :disabled => true}
+:javascript
+  $('#password-form').submit(function() {
+    password = $(this).find('#password').val();
+    sitename = $(this).find('#sitename').val();
+    hash_value = hex_md5(password + ':' + sitename).substr(0,8);
+    $(this).find('#hash').val(hash_value);
+    return false;
+  });
