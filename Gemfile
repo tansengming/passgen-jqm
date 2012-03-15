@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
-gem 'sqlite3'
 gem 'jquery_mobile_rails'
 gem 'jquery-rails'
 gem 'haml'
