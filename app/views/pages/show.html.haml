@@ -3,9 +3,7 @@
     %h1
       Password Generator
   %div{:'data-role' => 'content'}
-    This is the jQuery Mobilised version of
-    %a{:href => 'http://angel.net/~nic/passwd.html', :rel => 'external'}
-      Nic Wolff's Password Generator
+    Choose one master password to secure all your others and generate passwords for each site
     %form#password-form{:'data-ajax' => 'false', :method => 'post'}
       .ui-hide-label{:'data-role' => 'fieldcontain'}
         %p
@@ -19,7 +17,13 @@
         %p
           %input{:type => 'submit', :value => 'Generate'}
         %p
-          %input#hash{:type => 'text', :name => 'hash', :placeholder => 'Generated Hash'}
+          %input#hash{:type => 'text', :name => 'hash', :placeholder => 'Generated Password'}
+    %p
+      %small
+        %em
+          Adapted from
+          %a{:href => 'http://angel.net/~nic/passwd.html', :rel => 'external'}
+            Nic Wolff's Password Generator
 :javascript
   $('#form-page').live( 'pageinit',function(event){
     $('#password-form').submit(function() {
