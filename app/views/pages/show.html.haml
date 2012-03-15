@@ -1,12 +1,12 @@
-%div{:'data-role' => 'page'}
+%div#form-page{:'data-role' => 'page'}
   %div{:'data-role' => 'header'}
     %h1
       Password Generator
   %div{:'data-role' => 'content'}
-    This is the jQuery Mobile version of
+    This is the jQuery Mobilised version of
     %a{:href => 'http://angel.net/~nic/passwd.html', :rel => 'external'}
       Nic Wolff's Password Generator
-    %form#password-form{:'data-ajax' => 'false'}
+    %form#password-form{:'data-ajax' => 'false', :method => 'post'}
       .ui-hide-label{:'data-role' => 'fieldcontain'}
         %p
           %label{:for => 'password'}
@@ -21,10 +21,21 @@
         %p
           %input#hash{:type => 'text', :name => 'hash', :placeholder => 'Generated Hash'}
 :javascript
-  $('#password-form').submit(function() {
-    password = $(this).find('#password').val();
-    sitename = $(this).find('#sitename').val();
-    hash_value = hex_md5(password + ':' + sitename).substr(0,8);
-    $(this).find('#hash').val(hash_value).focus();
-    return false;
+  $('#form-page').live( 'pageinit',function(event){
+    $('#password-form').submit(function() {
+      password = $(this).find('#password').val();
+      sitename = $(this).find('#sitename').val();
+      hash_value = hex_md5(password + ':' + sitename).substr(0,8);
+
+      $(this).find('#hash').val(hash_value).focus();
+
+      localStorage.masterpassword = password;
+
+      return false;
+    });
+  });
+  $('#form-page').live( 'pageinit',function(event){
+    if (localStorage.masterpassword) {
+      $('#password-form #password').val(localStorage.masterpassword);
+    }
   });
