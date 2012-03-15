@@ -6,6 +6,7 @@ gem 'jquery_mobile_rails'
 gem 'jquery-rails'
 gem 'haml'
 gem 'kumade'
+gem 'heroku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -16,7 +17,4 @@ end
 group :development, :test do
   gem 'minitest'
   gem 'mini_shoulda'
-  # for html2haml
-  # gem 'hpricot'
-  # gem 'ruby_parser'
 end
