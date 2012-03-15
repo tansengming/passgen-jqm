@@ -1,0 +1,16 @@
+CACHE MANIFEST
+CACHE:
+- if Rails.env.production?
+  - Pathname.glob(Rails.root + 'public/assets/*-*.{js,css,png,gif}').map{|p| p.relative_path_from(Rails.root + 'public')}.map(&:to_s).each do |p|
+    = '/' + p
+
+  - Pathname.glob(Rails.root + 'public/assets/jquery-mobile/*-*.{js,css,png,gif}').map{|p| p.relative_path_from(Rails.root + 'public')}.map(&:to_s).each do |p|
+    = '/' + p
+- else
+  \/assets/application.css
+  \/assets/application.js
+NETWORK:
+*
+& # refreshes everyday: #{Date.today.to_s}"
+\# you really want this to update everytime any of the files change
+\# to force refresh 0
