@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'kumade'
 gem 'heroku'
+gem 'puma'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
