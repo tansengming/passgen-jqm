@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require jquery.mobile
 //= require md5
+//= require async_analytics
