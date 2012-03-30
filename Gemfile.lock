@@ -74,8 +74,6 @@ GEM
     minitest (2.11.3)
     multi_json (1.1.0)
     polyglot (0.3.3)
-    puma (1.0.0)
-      rack (~> 1.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -136,7 +134,6 @@ DEPENDENCIES
   kumade
   mini_shoulda
   minitest
-  puma
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

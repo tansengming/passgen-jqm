@@ -24,22 +24,3 @@
           Adapted from
           %a{:href => 'http://angel.net/~nic/passwd.html', :rel => 'external', :target => '_new'}
             Nic Wolff's Password Generator
-:javascript
-  $('#form-page').live( 'pageinit',function(event){
-    $('#password-form').submit(function() {
-      password = $(this).find('#password').val();
-      sitename = $(this).find('#sitename').val();
-      hash_value = hex_md5(password + ':' + sitename).substr(0,8);
-
-      $(this).find('#hash').val(hash_value).focus();
-
-      localStorage.masterpassword = password;
-
-      return false;
-    });
-  });
-  $('#form-page').live( 'pageinit',function(event){
-    if (localStorage.masterpassword) {
-      $('#password-form #password').val(localStorage.masterpassword);
-    }
-  });
