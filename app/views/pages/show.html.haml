@@ -4,7 +4,7 @@
       Password Generator
   %div{:'data-role' => 'content'}
     Choose one master password to secure all your others and generate passwords for each site
-    %form#password-form{:'data-ajax' => 'false', :method => 'post', :novalidate => true}
+    %form#password-form{:'data-ajax' => 'false', :method => 'post'}
       .ui-hide-label{:'data-role' => 'fieldcontain'}
         %p
           %label{:for => 'password'}
@@ -12,12 +12,14 @@
           %input#password{:type => 'password', :name => 'password', :placeholder => 'Master Password'}
         %p
           %label{:for => 'sitename'}
-            Site Name
-          %input#sitename{:type => 'url', :name => 'sitename', :placeholder => 'Site Name'}
+            Site URL
+          %input#sitename{:type => 'url', :name => 'sitename', :placeholder => 'Site Name', :value => 'http://'}
         %p
           %input{:type => 'submit', :value => 'Generate'}
         %p
           %input#hash{:type => 'text', :name => 'hash', :placeholder => 'Generated Password'}
+        %p#site_hint
+          %small
     %p
       %small
         %em

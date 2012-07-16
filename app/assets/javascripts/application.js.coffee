@@ -13,22 +13,20 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.mobile
-#= require md5
+#= require helper
 #= require async_analytics
 
 $('#form-page').live('pageinit', (event) -> 
   if (localStorage.masterpassword)
     $('#password-form #password').val(localStorage.masterpassword)
-  return false
+  false
 )
 
-$('#form-page').live('pageinit', (event) ->
-  $('#password-form').submit( () ->
+$('#form-page').live 'pageinit', (event) ->
+  $('#password-form').submit ->
     password = $(this).find('#password').val()
-    sitename = $(this).find('#sitename').val()
-    hash_value = hex_md5(password + ':' + sitename).substr(0,8)
-    $(this).find('#hash').val(hash_value).focus()
+    nice_sitename = Helper.url_val($(this).find('#sitename').val())
+    $(this).find('#hash').val(Helper.hash_val(password, nice_sitename)).focus()
+    $(this).find('#site_hint small').html('Hashed from ' + nice_sitename)
     localStorage.masterpassword = password
-    return false;
-  )
-)
+    false

@@ -7,6 +7,7 @@ gem 'haml'
 gem 'kumade'
 gem 'heroku'
 gem 'foreman'
+gem 'jasminerice'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
