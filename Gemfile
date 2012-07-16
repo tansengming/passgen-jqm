@@ -8,6 +8,7 @@ gem 'kumade'
 gem 'heroku'
 gem 'foreman'
 gem 'jasminerice'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
