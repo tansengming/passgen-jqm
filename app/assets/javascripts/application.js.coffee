@@ -19,14 +19,27 @@
 $('#form-page').live('pageinit', (event) -> 
   if (localStorage.masterpassword)
     $('#password-form #password').val(localStorage.masterpassword)
+  if (localStorage.lastsite)
+    $('#password-form #sitename').val(localStorage.lastsite)
   false
 )
 
+sitename = ->
+  $('#password-form #sitename').val()
+
+niceSitename = ->
+  Helper.url_val(sitename())
+
+password = ->
+  $('#password-form #password').val()
+
 $('#form-page').live 'pageinit', (event) ->
-  $('#password-form').submit ->
-    password = $(this).find('#password').val()
-    nice_sitename = Helper.url_val($(this).find('#sitename').val())
-    $(this).find('#hash').val(Helper.hash_val(password, nice_sitename)).focus()
-    $(this).find('#site_hint small').html('Hashed from ' + nice_sitename)
-    localStorage.masterpassword = password
+  $('#password-form').submit (event) ->
+    $(this).find('#hash').val(Helper.hash_val(password(), niceSitename())).focus()
+    $(this).find('#site_hint small').html('Hashed with ' + niceSitename())
+    false
+
+  $('#password-form').submit (event) ->
+    localStorage.masterpassword = password()
+    localStorage.lastsite = sitename()
     false
